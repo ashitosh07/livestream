@@ -65,6 +65,7 @@ function Projects() {
                       height: '100%',
                       width: '100%',
                     }}
+                    playsinline
                     allow='accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;'
                     allowfullscreen='true'
                   ></iframe>
@@ -89,6 +90,32 @@ function Projects() {
                       height: '100%',
                       width: '100%',
                     }}
+                    allow='accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;'
+                    allowfullscreen='true'
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+          </div>{' '}
+          <div className='video-container'>
+            <div className='video-item'>
+              <div className='item'>
+                <div
+                  style={{ position: 'relative', paddingTop: '56.25%' }}
+                  // onClick={handleVideoClick}
+                >
+                  <iframe
+                    src='https://livestream.hr/player/'
+                    style={{
+                      border: 'none',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      height: '100%',
+                      width: '100%',
+                    }}
+                    muted
+                    playsInline
                     allow='accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;'
                     allowfullscreen='true'
                   ></iframe>
