@@ -1,64 +1,68 @@
-import meter1 from "../assets/img/meter1.svg";
-import meter2 from "../assets/img/meter2.svg";
-import meter3 from "../assets/img/meter3.svg";
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import arrow1 from "../assets/img/arrow1.svg";
-import arrow2 from "../assets/img/arrow2.svg";
-import colorSharp from "../assets/img/color-sharp.png"
+import React, { useEffect } from 'react'
 
 export const Skills = () => {
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1
+  useEffect(() => {
+    // Function to create a new iFrame for the livestream chat
+    const insertChatFrame = () => {
+      const livevid = document.createElement('iframe')
+      livevid.src = 'https://www.youtube.com/live_chat?v=YOUR_VIDEO_ID' // Replace YOUR_VIDEO_ID with the actual video ID if needed
+      livevid.width = '100%'
+      livevid.height = '100%'
+      document.getElementById('chatframe').appendChild(livevid)
     }
-  };
+
+    // Function called when the YouTube IFrame API is ready
+    const onYouTubeIframeAPIReady = () => {
+      const player = new window.YT.Player('live-video', {
+        events: {
+          onReady: onPlayerReady,
+          onStateChange: onPlayerStateChange,
+        },
+      })
+
+      function onPlayerReady(event) {
+        event.target.playVideo()
+        insertChatFrame()
+      }
+
+      function onPlayerStateChange(event) {
+        // You can handle player state changes if needed
+      }
+    }
+
+    // Load the YouTube IFrame Player API asynchronously
+    const tag = document.createElement('script')
+    tag.src = 'https://www.youtube.com/iframe_api'
+    const firstScriptTag = document.getElementsByTagName('script')[0]
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
+
+    // Cleanup function to remove the created iFrame when the component unmounts
+    return () => {
+      const chatFrame = document.getElementById('chatframe')
+      if (chatFrame) {
+        chatFrame.innerHTML = '' // Remove the chat iFrame
+      }
+    }
+  }, []) // Run this effect only once when the component mounts
 
   return (
-    <section className="skill" id="skills">
-        <div className="container">
-            <div className="row">
-                <div className="col-12">
-                    <div className="skill-bx wow zoomIn">
-                        <h2>About Skills</h2>
-                        <p>I have learned different programming languages ​​so far and as far as my skills are concerned<br></br></p>
-                        <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
-                            <div className="item">
-                                <img src={meter1} alt="Image" />
-                                <h5>Web Development</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter2} alt="Image" />
-                                <h5>English</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter3} alt="Image" />
-                                <h5>Logo Design</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter1} alt="Image" />
-                                <h5>Web Development</h5>
-                            </div>
-                        </Carousel>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <img className="background-image-left" src={colorSharp} alt="Image" />
-    </section>
+    <div>
+      {/* Livestream Video */}
+      {/* <iframe
+        id='live-video'
+        src='https://livestream.hr/player/'
+        title='Livestream Player'
+        width='100%'
+        height='100%'
+        frameBorder='0'
+        allow='accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture'
+        allowFullScreen
+      ></iframe> */}
+
+      {/* Chat Frame */}
+      <div id='chatframe'></div>
+    </div>
   )
 }
+
+export default Skills

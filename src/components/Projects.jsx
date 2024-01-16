@@ -49,18 +49,49 @@ function Projects() {
           }}
           id='reel'
         >
-          {/* <img src={frameImg} className='frame' alt='Frame' /> */}
           <div className='video-container'>
             <div className='video-item'>
               <div className='item'>
-                <iframe
-                  title='Livestream Player'
-                  src='https://livestream.hr/player/'
-                  width='100%'
-                  height='600'
-                  frameBorder='0'
-                  allowFullScreen
-                ></iframe>
+                <div style={{ position: 'relative', paddingTop: '56.25%' }}>
+                  <iframe
+                    src='https://livestream.hr/player/'
+                    style={{
+                      border: 'none',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      height: '100%',
+                      width: '100%',
+                    }}
+                    allow='accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;'
+                    allowfullscreen='true'
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+          </div>{' '}
+          <div className='video-container'>
+            <div className='video-item'>
+              <div className='item'>
+                <div style={{ position: 'relative', paddingTop: '56.25%' }}>
+                  <iframe
+                    src='https://livestream.hr/player/'
+                    style={{
+                      border: 'none',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      height: '100%',
+                      width: '100%',
+                    }}
+                    controls
+                    preload='auto'
+                    autoplay='autoplay'
+                    loop
+                    muted
+                    playsInline
+                  ></iframe>
+                </div>
               </div>
             </div>
           </div>
