@@ -77,11 +77,9 @@ function Projects() {
               <div className='item'>
                 <div
                   style={{ position: 'relative', paddingTop: '56.25%' }}
-                  onClick={handleVideoClick}
+                  // onClick={handleVideoClick}
                 >
                   <iframe
-                    id='livestreamVideo'
-                    title='Livestream Player'
                     src='https://livestream.hr/player/'
                     style={{
                       border: 'none',
@@ -91,11 +89,6 @@ function Projects() {
                       height: '100%',
                       width: '100%',
                     }}
-                    controls
-                    preload='auto'
-                    loop
-                    muted
-                    playsInline
                     allow='accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;'
                     allowfullscreen='true'
                   ></iframe>
