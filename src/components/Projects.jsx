@@ -95,6 +95,27 @@ function Projects() {
               </div>
             </div>
           </div>
+          <div className='video-container'>
+            <div className='video-item'>
+              <div className='item'>
+                <div style={{ position: 'relative', paddingTop: '56.25%' }}>
+                  <iframe
+                    src='https://customer-miw9mt3gg9tkxmg2.cloudflarestream.com/d6cc2c89511c9354508fd2ed9aa0b088/iframe'
+                    style={{
+                      border: 'none',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      height: '100%',
+                      width: '100%',
+                    }}
+                    allow='accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;'
+                    allowfullscreen='true'
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
           {/* <button onClick={handleToggleMute} className='mute-toggle'>
         {muted ? 'Unmute' : 'Mute'}
       </button> */}
