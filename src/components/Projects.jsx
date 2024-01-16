@@ -42,6 +42,7 @@ function Projects() {
     <section className='project' id='project'>
       <Container>
         <div
+          onClick={handleVideoClick}
           className=' p-10 relative'
           style={{
             backgroundColor: 'black',
@@ -95,6 +96,8 @@ function Projects() {
                     loop
                     muted
                     playsInline
+                    allow='accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;'
+                    allowfullscreen='true'
                   ></iframe>
                 </div>
               </div>
