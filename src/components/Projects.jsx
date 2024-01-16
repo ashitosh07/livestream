@@ -28,13 +28,14 @@ function Projects() {
     }
   }, [])
 
-  const handleToggleMute = () => {
-    setMuted((prevMuted) => {
-      if (videoRef.current) {
-        videoRef.current.muted = !prevMuted
-      }
-      return !prevMuted
-    })
+  const handleVideoClick = () => {
+    const video = document.getElementById('livestreamVideo')
+    if (video) {
+      video.play().catch((error) => {
+        // Autoplay failed, handle the error or provide a user prompt
+        console.error('Autoplay failed:', error)
+      })
+    }
   }
 
   return (
@@ -73,8 +74,13 @@ function Projects() {
           <div className='video-container'>
             <div className='video-item'>
               <div className='item'>
-                <div style={{ position: 'relative', paddingTop: '56.25%' }}>
+                <div
+                  style={{ position: 'relative', paddingTop: '56.25%' }}
+                  onClick={handleVideoClick}
+                >
                   <iframe
+                    id='livestreamVideo'
+                    title='Livestream Player'
                     src='https://livestream.hr/player/'
                     style={{
                       border: 'none',
@@ -86,7 +92,6 @@ function Projects() {
                     }}
                     controls
                     preload='auto'
-                    autoplay='autoplay'
                     loop
                     muted
                     playsInline
