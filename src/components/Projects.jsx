@@ -1,49 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './Project.css'
-// import mainbg from '../../../assets/mainbg.png'
-// import frameImg from '../../../assets/frameimg.png'
 import placeholderVideo from '../../src/assets/img/reel.mp4'
-import { Container, Row, Col, Tab, Nav } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
+
 function Projects() {
-  const videoRef = useRef(null)
-  const [muted, setMuted] = useState(true)
-
-  useEffect(() => {
-    const playVideo = () => {
-      if (videoRef.current) {
-        videoRef.current.play().catch((error) => {
-          console.error('Autoplay prevented:', error)
-        })
-      }
-    }
-
-    // Play the video when the component mounts
-    playVideo()
-
-    // Cleanup function to pause the video when the component is unmounted
-    return () => {
-      if (videoRef.current) {
-        videoRef.current.pause()
-      }
-    }
-  }, [])
-
-  const handleVideoClick = () => {
-    const video = document.getElementById('livestreamVideo')
-    if (video) {
-      video.play().catch((error) => {
-        // Autoplay failed, handle the error or provide a user prompt
-        console.error('Autoplay failed:', error)
-      })
-    }
-  }
-
   return (
     <section className='project' id='project'>
       <Container>
         <div
-          onClick={handleVideoClick}
-          className=' p-10 relative'
+          className='p-10 relative'
           style={{
             backgroundColor: 'black',
             backgroundSize: 'cover',
@@ -55,95 +20,24 @@ function Projects() {
             <div className='video-item'>
               <div className='item'>
                 <div style={{ position: 'relative', paddingTop: '56.25%' }}>
-                  <iframe
-                    src='https://livestream.hr/player/'
-                    style={{ border: 'none', width: '100%', height: '100%' }}
-                    allow='autoplay; fullscreen; picture-in-picture'
-                    allowFullScreen
-                    webkitAllowFullScreen
-                    mozAllowFullScreen
-                    frameBorder='0'
-                    muted
-                  ></iframe>
-                </div>
-              </div>
-            </div>
-          </div>{' '}
-          <div className='video-container'>
-            <div className='video-item'>
-              <div className='item'>
-                <div
-                  style={{ position: 'relative', paddingTop: '56.25%' }}
-                  // onClick={handleVideoClick}
-                >
-                  <iframe
-                    src='https://livestream.hr/player/'
-                    style={{
-                      border: 'none',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      height: '100%',
-                      width: '100%',
+                  <div
+                    class='plyr__video-embed'
+                    id='player'
+                    dangerouslySetInnerHTML={{
+                      __html: `
+                        <iframe
+                          src="https://livestream.hr/player/?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
+                          allowfullscreen
+                          allowtransparency
+                          allow="autoplay"
+                        ></iframe>`,
                     }}
-                    allow='accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;'
-                    allowfullscreen='true'
-                  ></iframe>
-                </div>
-              </div>
-            </div>
-          </div>{' '}
-          <div className='video-container'>
-            <div className='video-item'>
-              <div className='item'>
-                <div
-                  style={{ position: 'relative', paddingTop: '56.25%' }}
-                  // onClick={handleVideoClick}
-                >
-                  <iframe
-                    src='https://livestream.hr/player/'
-                    style={{
-                      border: 'none',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      height: '100%',
-                      width: '100%',
-                    }}
-                    muted
-                    playsInline
-                    allow='accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;'
-                    allowfullscreen='true'
-                  ></iframe>
+                  ></div>
                 </div>
               </div>
             </div>
           </div>
-          <div className='video-container'>
-            <div className='video-item'>
-              <div className='item'>
-                <div style={{ position: 'relative', paddingTop: '56.25%' }}>
-                  <iframe
-                    src='https://customer-miw9mt3gg9tkxmg2.cloudflarestream.com/d6cc2c89511c9354508fd2ed9aa0b088/iframe'
-                    style={{
-                      border: 'none',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      height: '100%',
-                      width: '100%',
-                    }}
-                    allow='accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;'
-                    allowfullscreen='true'
-                  ></iframe>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* <button onClick={handleToggleMute} className='mute-toggle'>
-        {muted ? 'Unmute' : 'Mute'}
-      </button> */}
-        </div>{' '}
+        </div>
       </Container>
     </section>
   )
