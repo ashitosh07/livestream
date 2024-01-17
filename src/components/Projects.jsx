@@ -57,17 +57,13 @@ function Projects() {
                 <div style={{ position: 'relative', paddingTop: '56.25%' }}>
                   <iframe
                     src='https://livestream.hr/player/'
-                    style={{
-                      border: 'none',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      height: '100%',
-                      width: '100%',
-                    }}
-                    playsinline
-                    allow='accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;'
-                    allowfullscreen='true'
+                    style='border: none; width: 100%; height: 100%;'
+                    allow='autoplay; fullscreen; picture-in-picture'
+                    allowfullscreen
+                    webkitallowfullscreen
+                    mozallowfullscreen
+                    frameborder='0'
+                    muted
                   ></iframe>
                 </div>
               </div>
